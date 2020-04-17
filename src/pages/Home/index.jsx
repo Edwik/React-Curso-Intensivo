@@ -1,22 +1,35 @@
 import React, { useState } from "react";
-import { Pane, Card, Heading } from "evergreen-ui";
+import { Pane, Card, Heading, Button } from "evergreen-ui";
 import styled from "styled-components";
 import background from "./../../assets/images/marvell-02.jpg";
+import Navbar from "./../../components/Navbar";
 
-const StyledContainer = styled(Pane)`
+const StyledText = styled.span`
+  text-transform: uppercase;
+  color: #fff;
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+`;
+const StyledMainContainer = styled(Pane)`
   width: 100%;
   height: 100%;
   background-color: #000;
 `;
+const StyledBodyContainer = styled(Pane)`
+  display: flex;
+`;
 
-const StyledPane = styled(Pane)`
+const StyledMoviesPane = styled(Pane)`
   margin: 2em 0;
   width: 60%;
-  height: 60%;
-  float: right;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+`;
+const StyledTrendingMovie = styled(Pane)`
+  width: 40%;
+  padding-left: 3rem;
 `;
 
 const StyledCard = styled(Card)`
@@ -34,7 +47,24 @@ const StyledHeading = styled(Heading)`
   padding: 6em 0.5em 0.5em 0.5em;
 `;
 
+const StyledMovieTitle = styled(StyledHeading)`
+  font-size: 3rem;
+  padding-left: 0;
+`;
+const StyledButton = styled(Button)`
+  margin-right: 1rem;
+  text-transform: uppercase;
+`;
+
 function Home() {
+  const [trendingMovie, SetTrendingMovie] = useState({
+    id: 1,
+    title: "WonderWoman",
+    genres: ["action", "adventure", "fantasy"],
+    duration: "2h 45min",
+    imagePath: "",
+  });
+
   const [sections, setSections] = useState([
     { id: 1, title: "Most popular" },
     { id: 2, title: "New releases" },
@@ -46,15 +76,29 @@ function Home() {
     { id: 8, title: "History" },
   ]);
   return (
-    <StyledContainer>
-      <StyledPane>
-        {sections.map((section) => (
-          <StyledCard key={section.id}>
-            <StyledHeading>{section.title}</StyledHeading>
-          </StyledCard>
-        ))}
-      </StyledPane>
-    </StyledContainer>
+    <StyledMainContainer>
+      <Navbar />
+      <StyledBodyContainer>
+        <StyledTrendingMovie>
+          <StyledMovieTitle>{trendingMovie.title}</StyledMovieTitle>
+          <StyledText>
+            {trendingMovie.genres.join(", ")} * {trendingMovie.duration}
+          </StyledText>
+          <StyledButton appearance="primary">Watch now</StyledButton>
+          <StyledButton appearance="primary" intent="success">
+            More info
+          </StyledButton>
+        </StyledTrendingMovie>
+
+        <StyledMoviesPane>
+          {sections.map((section) => (
+            <StyledCard key={section.id}>
+              <StyledHeading>{section.title}</StyledHeading>
+            </StyledCard>
+          ))}
+        </StyledMoviesPane>
+      </StyledBodyContainer>
+    </StyledMainContainer>
   );
 }
 
