@@ -9,7 +9,7 @@ function Navigator() {
     <Router>
       <Switch>
         
-        <Route exact path={`/login`} component={Login} />
+        <Route exact path={`/`} component={Login} />
         <Route component={NotFoundComponent} />
 
       </Switch>
