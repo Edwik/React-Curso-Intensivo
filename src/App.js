@@ -1,9 +1,12 @@
 import React from 'react';
+import {Navigator} from './navigations/Navigator'
 
 function App() {
   return (
     <div className="App">
-      Welcome App VIDEOS
+
+      <Navigator/>
+      
     </div>
   );
 }
