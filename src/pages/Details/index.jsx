@@ -16,11 +16,19 @@ function Details() {
         justify-content: center;
         align-items: center;
     `
+    const Container = styled.div`
+        margin-top:100px;
+    `
+
     return (
+
         <ContenedorDetail>
             <Header />
-            <ContainerTitle />
-            <MovieDetail />
+            <Container>
+                <ContainerTitle />
+                <MovieDetail />
+            </Container>
+
         </ContenedorDetail>
 
     )
