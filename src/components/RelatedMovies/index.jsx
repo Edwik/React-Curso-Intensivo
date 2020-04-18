@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pane, Card, Heading } from "evergreen-ui";
 import styled from "styled-components";
-import imagePath from "./../../assets/images/marvell-03.jpg";
+import imagePath from "./../../assets/images/movie-cover.jpg";
 
 const RelatedMoviesList = styled(Pane)`
   display: flex;
