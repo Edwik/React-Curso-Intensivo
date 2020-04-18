@@ -10,7 +10,6 @@ import background from "./../../assets/images/wonder-woman-landscape.jpg";
 const StyledContainer = styled(Pane)`
   color: #fff;
   background-color: #000;
-  padding: 1rem;
   background-image: linear-gradient(
       to left,
       rgba(0, 0, 0, 0.1),
