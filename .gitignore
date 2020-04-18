@@ -105,3 +105,6 @@ dist
 
 # Now service to deploy app
 .now
+
+# Package lock
+package-lock.json
