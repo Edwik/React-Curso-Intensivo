@@ -1,7 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { Pane, TextInput, Button, Heading } from 'evergreen-ui'
-import background from './../../assets/images/background.jpg';
+import background from './../../assets/images/background.jpg'
+import {connect} from 'react-redux'
+import {LoginAction} from './../../redux/actions/login.actions'
 
 const Wrapper = styled.div`
 	display: flex;
@@ -36,10 +38,25 @@ const Btn = styled(Button)`
 	justify-content: center;
 `
 
-function Login (){
+function Login ({LOGIN_RESPONSE, LoginAction}){
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	useEffect( ()=>{
+		
+		if(!LOGIN_RESPONSE) return
+
+		if(LOGIN_RESPONSE.status !== 200){
+			//handle error
+			return
+		}
+
+		//handle success
+		console.log(`Welcome ${LOGIN_RESPONSE.res.displayName}`)
+
+		
+	}, [LOGIN_RESPONSE])
 
 	const FormElement= (
 		<FormContainer>
@@ -56,7 +73,7 @@ function Login (){
 				value={password}
 				onChange={e => setPassword(e.target.value)}
 			/>
-			<Btn appearance="primary" onClick={() => { console.log(`Email: ${email}, Password: ${password}`) }}>Sign in</Btn>
+			<Btn appearance="primary" onClick={() => { LoginAction({email, password}) }}>Sign in</Btn>
 		</FormContainer>
 	)
 
@@ -67,4 +84,10 @@ function Login (){
 	)
 }
 
-export {Login}
+const mapStateToProps = (state, props) => {
+	return {
+		LOGIN_RESPONSE: state.loginRededucers.LoginResponse
+	}
+}
+
+export default connect( mapStateToProps, {LoginAction} )(Login)
