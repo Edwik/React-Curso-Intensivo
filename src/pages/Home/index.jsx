@@ -6,14 +6,7 @@ import Navbar from "./../../components/Navbar";
 import MovieCategories from "./../../components/MovieCategories";
 import background from "./../../assets/images/wonder-woman-portrait.jpg";
 
-const StyledText = styled.p`
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 0.8rem;
-  margin-bottom: 2rem;
-`;
-
-const StyledMainContainer = styled(Pane)`
+const MainContainer = styled(Pane)`
   width: 100%;
   height: 100%;
   background-color: #000;
@@ -27,20 +20,28 @@ const StyledMainContainer = styled(Pane)`
   background-size: 100vh;
 `;
 
-const StyledBodyContainer = styled(Pane)`
+const BodyContainer = styled(Pane)`
   display: flex;
+  flex-flow: row wrap;
   align-items: flex-end;
 `;
 
-const StyledMoviesPane = styled(Pane)`
-  width: 60%;
+const TrendingMovie = styled(Pane)`
+  width: 100%;
+  padding-left: 3rem;
+  @media (min-width: 992px) {
+    width: 40%;
+  }
+`;
+
+const CategoriesContainer = styled(Pane)`
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-`;
-const StyledTrendingMovie = styled(Pane)`
-  width: 40%;
-  padding-left: 3rem;
+  @media (min-width: 992px) {
+    width: 60%;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -49,7 +50,7 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 0.5rem;
 `;
 
-const StyledMovieTitle = styled(StyledHeading)`
+const MovieTitle = styled(StyledHeading)`
   font-size: 3rem;
   font-weight: bold;
   line-height: 3rem;
@@ -57,6 +58,7 @@ const StyledMovieTitle = styled(StyledHeading)`
 
 const StyledButton = styled(Button)`
   margin-right: 1rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   background-image: none;
   background-color: #745496;
@@ -75,6 +77,13 @@ const StyledButtonInfo = styled(StyledButton)`
   }
 `;
 
+const MovieInfo = styled.p`
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+`;
+
 function Home() {
   const [trendingMovie, setTrendingMovie] = useState({
     id: 1,
@@ -85,27 +94,27 @@ function Home() {
   });
 
   return (
-    <StyledMainContainer>
+    <MainContainer>
       <Navbar />
-      <StyledBodyContainer>
-        <StyledTrendingMovie>
+      <BodyContainer>
+        <TrendingMovie>
           <StyledHeading>Trending</StyledHeading>
-          <StyledMovieTitle>{trendingMovie.title}</StyledMovieTitle>
-          <StyledText>
+          <MovieTitle>{trendingMovie.title}</MovieTitle>
+          <MovieInfo>
             {trendingMovie.genres.join(", ")} * {trendingMovie.duration}
-          </StyledText>
+          </MovieInfo>
           <StyledButton appearance="primary" is={Link} to="/details">
             Watch now
           </StyledButton>
           <StyledButtonInfo appearance="primary" is={Link} to="/details">
             More info
           </StyledButtonInfo>
-        </StyledTrendingMovie>
-        <StyledMoviesPane>
+        </TrendingMovie>
+        <CategoriesContainer>
           <MovieCategories />
-        </StyledMoviesPane>
-      </StyledBodyContainer>
-    </StyledMainContainer>
+        </CategoriesContainer>
+      </BodyContainer>
+    </MainContainer>
   );
 }
 

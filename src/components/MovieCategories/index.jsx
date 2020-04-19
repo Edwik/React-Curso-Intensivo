@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Card, Heading } from "evergreen-ui";
+import { Heading } from "evergreen-ui";
 import { Link } from "react-router-dom";
 import background from "./../../assets/images/category-image.jpg";
 
 const MovieCategory = styled(Link)`
-  margin: 0.65rem;
-  width: 15.625rem;
-  background-image: url(${background});
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 0.3rem;
   text-decoration: none;
+  position: relative;
+  width: 100%;
+  margin: 1rem 3rem;
+  @media (min-width: 576px) {
+    width: 15.625rem;
+    margin: 0.5rem 0.65rem;
+  }
 `;
+
 const CategoryName = styled(Heading)`
   text-transform: uppercase;
   font-weight: bold;
   color: #fff;
-  padding: 6rem 0.5rem 0.5rem 0.5rem;
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+`;
+
+const ImageResponsive = styled.img`
+  width: 100%;
+  border-radius: 0.3rem;
 `;
 
 function MovieCategories() {
@@ -35,6 +44,7 @@ function MovieCategories() {
     <>
       {categories.map((section) => (
         <MovieCategory key={section.id} to="/details">
+          <ImageResponsive src={background} alt="Category Movie" />
           <CategoryName>{section.title}</CategoryName>
         </MovieCategory>
       ))}
