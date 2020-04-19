@@ -7,7 +7,7 @@ import RelatedMovies from "./../../components/RelatedMovies";
 import Navbar from "./../../components/Navbar";
 import background from "./../../assets/images/wonder-woman-landscape.jpg";
 
-const StyledContainer = styled(Pane)`
+const MainContainer = styled(Pane)`
   color: #fff;
   background-color: #000;
   background-image: linear-gradient(
@@ -19,14 +19,21 @@ const StyledContainer = styled(Pane)`
   background-repeat: no-repeat;
 `;
 
+const BodyContainer = styled(Pane)`
+  display: flex;
+  flex-flow: column wrap;
+`;
+
 function Details() {
   return (
-    <StyledContainer>
+    <MainContainer>
       <Navbar />
-      <Synopsis />
-      <Starring />
-      <RelatedMovies />
-    </StyledContainer>
+      <BodyContainer>
+        <Synopsis />
+        <Starring />
+        <RelatedMovies />
+      </BodyContainer>
+    </MainContainer>
   );
 }
 
