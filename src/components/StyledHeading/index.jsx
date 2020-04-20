@@ -6,10 +6,10 @@ const StyledHeading = styled(Heading)`
   color: #fff;
   font-size: ${(props) => (props.fontSize ? props.fontSize : "")};
   font-weight: ${(props) =>
-    props.headingType === "title" ? "bold" : "normal"};
+    props.headingtype === "title" ? "bold" : "normal"};
   line-height: ${(props) =>
-    props.headingType === "title" ? "3rem" : "normal"};
-  ${(props) => (props.headingType === "info" ? "margin-bottom: 2rem" : "")};
+    props.headingtype === "title" ? "3rem" : "normal"};
+  ${(props) => (props.headingtype === "info" ? "margin-bottom: 2rem" : "")};
 `;
 
 export default StyledHeading;

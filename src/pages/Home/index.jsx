@@ -58,18 +58,18 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
       <Navbar />
       <BodyContainer>
         <TrendingMovie>
-          <StyledHeading headingType="subtitle" fontSize="1rem">
+          <StyledHeading headingtype="subtitle" fontSize="1rem">
             Trending
           </StyledHeading>
-          <StyledHeading headingType="title" fontSize="3rem">
+          <StyledHeading headingtype="title" fontSize="3rem">
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.title}
           </StyledHeading>
-          <StyledHeading headingType="info" fontSize="0.8rem">
+          <StyledHeading headingtype="info" fontSize="0.8rem">
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} *{" "}
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.duration}
           </StyledHeading>
           <StyledButton
-            btnType="primary"
+            btntype="primary"
             appearance="primary"
             is={Link}
             to="/details"
@@ -77,7 +77,7 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
             Watch now
           </StyledButton>
           <StyledButton
-            btnType="secondary"
+            btntype="secondary"
             appearance="primary"
             is={Link}
             to="/details"
