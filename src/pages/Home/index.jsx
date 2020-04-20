@@ -60,17 +60,17 @@ function Home() {
       <Navbar />
       <BodyContainer>
         <TrendingMovie>
-          <StyledHeading headingType="subtitle" fontSize="1rem">
+          <StyledHeading headingtype="subtitle" fontSize="1rem">
             Trending
           </StyledHeading>
-          <StyledHeading headingType="title" fontSize="3rem">
+          <StyledHeading headingtype="title" fontSize="3rem">
             {trendingMovie.title}
           </StyledHeading>
-          <StyledHeading headingType="info" fontSize="0.8rem">
+          <StyledHeading headingtype="info" fontSize="0.8rem">
             {trendingMovie.genres.join(", ")} * {trendingMovie.duration}
           </StyledHeading>
           <StyledButton
-            btnType="primary"
+            btntype="primary"
             appearance="primary"
             is={Link}
             to="/details"
@@ -78,7 +78,7 @@ function Home() {
             Watch now
           </StyledButton>
           <StyledButton
-            btnType="secondary"
+            btntype="secondary"
             appearance="primary"
             is={Link}
             to="/details"
