@@ -5,10 +5,8 @@ const StyledHeading = styled(Heading)`
   text-transform: uppercase;
   color: #fff;
   font-size: ${(props) => (props.fontSize ? props.fontSize : "")};
-  font-weight: ${(props) =>
-    props.headingtype === "title" ? "bold" : "normal"};
-  line-height: ${(props) =>
-    props.headingtype === "title" ? "3rem" : "normal"};
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "normal")};
+  line-height: ${(props) => (props.lineHeight ? props.lineHeight : "normal")};
   ${(props) => (props.headingtype === "info" ? "margin-bottom: 2rem" : "")};
 `;
 

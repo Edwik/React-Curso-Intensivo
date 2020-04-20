@@ -63,7 +63,12 @@ function Home() {
           <StyledHeading headingtype="subtitle" fontSize="1rem">
             Trending
           </StyledHeading>
-          <StyledHeading headingtype="title" fontSize="3rem">
+          <StyledHeading
+            headingtype="title"
+            fontSize="3rem"
+            fontWeight="bold"
+            lineHeight="3rem"
+          >
             {trendingMovie.title}
           </StyledHeading>
           <StyledHeading headingtype="info" fontSize="0.8rem">
