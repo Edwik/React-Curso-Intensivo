@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Pane } from "evergreen-ui";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { TrendingAction } from "./../../redux/actions/movies.actions";
 import Navbar from "./../../components/Navbar";
 import MovieCategories from "./../../components/MovieCategories";
 import StyledHeading from "./../../components/StyledHeading";
@@ -46,14 +48,10 @@ const CategoriesContainer = styled(Pane)`
   }
 `;
 
-function Home() {
-  const [trendingMovie, setTrendingMovie] = useState({
-    id: 1,
-    title: "Wonder Woman",
-    genres: ["action", "adventure", "fantasy"],
-    duration: "2h 45min",
-    imagePath: "",
-  });
+function Home({ TRENDING_RESPONSE, TrendingAction }) {
+  useEffect(() => {
+    TrendingAction();
+  }, [TrendingAction]);
 
   return (
     <MainContainer>
@@ -64,10 +62,11 @@ function Home() {
             Trending
           </StyledHeading>
           <StyledHeading headingType="title" fontSize="3rem">
-            {trendingMovie.title}
+            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.title}
           </StyledHeading>
           <StyledHeading headingType="info" fontSize="0.8rem">
-            {trendingMovie.genres.join(", ")} * {trendingMovie.duration}
+            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} *{" "}
+            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.duration}
           </StyledHeading>
           <StyledButton
             btnType="primary"
@@ -94,4 +93,8 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = (state, props) => ({
+  TRENDING_RESPONSE: state.moviesReducers.TrendingResponse,
+});
+
+export default connect(mapStateToProps, { TrendingAction })(Home);
