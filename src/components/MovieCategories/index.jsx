@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Heading } from "evergreen-ui";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { CategoriesAction } from "./../../redux/actions/movies.actions";
 import background from "./../../assets/images/category-image.jpg";
 
 const MovieCategory = styled(Link)`
@@ -32,27 +34,26 @@ const ImageResponsive = styled.img`
   border-radius: 0.3rem;
 `;
 
-function MovieCategories() {
-  const [categories, setCategories] = useState([
-    { id: 1, title: "Most popular" },
-    { id: 2, title: "New releases" },
-    { id: 3, title: "Friend recommendations" },
-    { id: 4, title: "Bases on actor/actress" },
-    { id: 5, title: "Charts & Trends" },
-    { id: 6, title: "Browse movies" },
-    { id: 7, title: "My favorities" },
-    { id: 8, title: "History" },
-  ]);
+function MovieCategories({ CATEGORIES_RESPONSE, CategoriesAction }) {
+  useEffect(() => {
+    CategoriesAction();
+  }, [CategoriesAction]);
+
   return (
     <>
-      {categories.map((section) => (
-        <MovieCategory key={section.id} to="/details">
-          <ImageResponsive src={background} alt="Category Movie" />
-          <CategoryName>{section.title}</CategoryName>
-        </MovieCategory>
-      ))}
+      {CATEGORIES_RESPONSE.res &&
+        CATEGORIES_RESPONSE.res.map((category) => (
+          <MovieCategory key={category.id} to="/details">
+            <ImageResponsive src={background} alt="Category Movie" />
+            <CategoryName>{category.title}</CategoryName>
+          </MovieCategory>
+        ))}
     </>
   );
 }
 
-export default MovieCategories;
+const mapStateToProps = (state, props) => ({
+  CATEGORIES_RESPONSE: state.categoriesReducers.CategoriesResponse,
+});
+
+export default connect(mapStateToProps, { CategoriesAction })(MovieCategories);
