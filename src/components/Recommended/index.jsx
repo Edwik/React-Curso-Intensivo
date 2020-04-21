@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Avatar } from "evergreen-ui";
 import styled from "styled-components";
-import StyledHeading from "./../StyledHeading";
+import { StyledHeading } from "./../../components";
 
 const AvatarContainer = styled.span`
   margin-right: 0.6rem;

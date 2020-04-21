@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Pane } from "evergreen-ui";
-import Synopsis from "./../../components/Synopsis";
-import Starring from "./../../components/Starring";
-import RelatedMovies from "./../../components/RelatedMovies";
-import Navbar from "./../../components/Navbar";
 import background from "./../../assets/images/wonder-woman-landscape.jpg";
-import StyledHeading from "./../../components/StyledHeading";
-import StyledButton from "./../../components/Button";
-import Directed from "./../../components/Directed";
-import Recommended from "./../../components/Recommended";
-import star from "./../../assets/svg/star-solid.svg";
+import imageStar from "./../../assets/svg/star-solid.svg";
+import {
+  Navbar,
+  Directed,
+  Recommended,
+  RelatedMovies,
+  Starring,
+  StyledHeading,
+  StyledButton,
+  Synopsis,
+} from "./../../components";
 
 const MainContainer = styled(Pane)`
   color: #fff;
@@ -79,7 +81,7 @@ function Details() {
             {detailsMovie.title}
           </TitleMovie>
           <ScoreContainer>
-            <img src={star} alt="Star icon" width="15px" />{" "}
+            <img src={imageStar} alt="Star icon" width="15px" />{" "}
             <span>{detailsMovie.score}</span>
           </ScoreContainer>
           <StyledHeading

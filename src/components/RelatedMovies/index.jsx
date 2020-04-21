@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pane } from "evergreen-ui";
 import styled from "styled-components";
-import StyledHeading from "./../StyledHeading";
+import { StyledHeading } from "./../../components";
 import imagePath from "./../../assets/images/movie-cover-02.jpg";
 import imagePath03 from "./../../assets/images/movie-cover-03.jpg";
 import star from "./../../assets/svg/star-solid.svg";

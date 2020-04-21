@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pane } from "evergreen-ui";
 import styled from "styled-components";
-import StyledHeading from "./../StyledHeading";
+import { StyledHeading } from "./../../components";
 
 const SynopsisContainer = styled(Pane)`
   margin-right: 2rem;

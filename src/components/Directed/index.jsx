@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StyledHeading from "./../StyledHeading";
+import { StyledHeading } from "./../../components";
 
 function Directed() {
   const [director, setDirector] = useState({

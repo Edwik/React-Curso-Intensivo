@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Pane } from "evergreen-ui";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Navbar from "./../../components/Navbar";
-import MovieCategories from "./../../components/MovieCategories";
-import StyledHeading from "./../../components/StyledHeading";
 import background from "./../../assets/images/wonder-woman-portrait.jpg";
-import StyledButton from "./../../components/Button";
+import {
+  Navbar,
+  MovieCategories,
+  StyledButton,
+  StyledHeading,
+} from "./../../components";
 
 const MainContainer = styled(Pane)`
   width: 100%;
