@@ -1,6 +1,7 @@
 import { Fetch } from "./../Fetch";
 import Routes from "./../Routes";
 import { jsonResponse } from "./../../tools/JsonResponse";
+
 class LoginService {
   async login(payload) {
     return Fetch("get", Routes.login, payload)
