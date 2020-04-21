@@ -1,17 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { Pane, Heading } from "evergreen-ui";
-
-const Title = styled(Heading)`
-  padding: 4rem 0 0.5rem 1rem;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 1.2rem;
-`;
-
-const SynopsisMovie = styled(Pane)`
-  padding: 1.5rem;
-`;
+import StyledHeading from "./../StyledHeading";
 
 function Synopsis() {
   const [synopsisMovie, setSynopsisMovie] = useState({
@@ -21,8 +9,14 @@ function Synopsis() {
   });
   return (
     <>
-      <Title>Synopsis</Title>
-      <SynopsisMovie>{synopsisMovie.info}</SynopsisMovie>
+      <StyledHeading
+        fontSize="1.2rem"
+        paddingvalue="3rem 0 1rem 0"
+        fontWeight="bold"
+      >
+        Synopsis
+      </StyledHeading>
+      <StyledHeading textTransform="none">{synopsisMovie.info}</StyledHeading>
     </>
   );
 }
