@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Pane, Heading, Avatar } from "evergreen-ui";
+import { Pane, Avatar } from "evergreen-ui";
 import styled from "styled-components";
+import StyledHeading from "./../StyledHeading";
 import imagePath from "./../../assets/images/gal-gadot.jpg";
 
 const StarringMovieList = styled(Pane)`
@@ -9,26 +10,13 @@ const StarringMovieList = styled(Pane)`
 `;
 
 const StarringMovie = styled(Pane)`
-  text-transform: uppercase;
-  padding: 1rem 1.5rem;
+  width: 7.5rem;
+  margin: 0.3rem 0.9rem;
   text-align: center;
-`;
-
-const Title = styled(Heading)`
-  padding: 4rem 0 0.5rem 1rem;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 1.2rem;
-`;
-
-const StarringName = styled(Heading)`
-  color: #fff;
-  font-size: 0.8rem;
-`;
-
-const StarringQuantityMovies = styled(Heading)`
-  color: #fff;
-  font-size: 0.6rem;
+  &:hover {
+    transform: scale(1.2);
+    filter: saturate(200%);
+  }
 `;
 
 function Starring() {
@@ -42,15 +30,17 @@ function Starring() {
 
   return (
     <>
-      <Title>Starring</Title>
+      <StyledHeading fontSize="1.1rem" paddingvalue="3rem 0 1rem 0">
+        Starring
+      </StyledHeading>
       <StarringMovieList>
         {starringMovie.map((starring) => (
           <StarringMovie key={starring.id}>
-            <Avatar src={starring.photo} name={starring.name} size={80} />
-            <StarringName>{starring.name}</StarringName>
-            <StarringQuantityMovies>
+            <Avatar src={starring.photo} name={starring.name} size={100} />
+            <StyledHeading fontSize="0.9rem">{starring.name}</StyledHeading>
+            <StyledHeading fontSize="0.6rem">
               {starring.quantityMovies} Movies
-            </StarringQuantityMovies>
+            </StyledHeading>
           </StarringMovie>
         ))}
       </StarringMovieList>

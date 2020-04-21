@@ -9,9 +9,14 @@ const StyledNavbar = styled(Pane)`
   flex-direction: column;
 `;
 
-const ToggleButton = styled(Pane)`
+const ToggleButton = styled.span`
   color: #fff;
   padding: 0.5rem;
+  border-radius: 50%;
+  width: 0.9375rem;
+  &:active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
   @media (min-width: 768px) {
     display: none;
   }
@@ -21,6 +26,7 @@ const LinksContainer = styled(Pane)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
   @media (min-width: 768px) {
     flex-direction: row;
   }
@@ -32,11 +38,15 @@ const StyledLink = styled(Link)`
   font-weight: bold;
   padding: 1rem;
   text-decoration: none;
+  &:active,
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `;
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const classContainer = isOpen ? "" : "collapsed";
+  const classContainer = isOpen ? "expanded" : "collapsed";
   return (
     <StyledNavbar>
       <ToggleButton onClick={() => setIsOpen(!isOpen)}>☰</ToggleButton>

@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Pane } from "evergreen-ui";
-import Synopsis from "./../../components/Synopsis";
-import Starring from "./../../components/Starring";
-import RelatedMovies from "./../../components/RelatedMovies";
-import Navbar from "./../../components/Navbar";
 import background from "./../../assets/images/wonder-woman-landscape.jpg";
+import imageStar from "./../../assets/svg/star-solid.svg";
+import {
+  Navbar,
+  Directed,
+  Recommended,
+  RelatedMovies,
+  Starring,
+  StyledHeading,
+  StyledButton,
+  Synopsis,
+} from "./../../components";
 
 const MainContainer = styled(Pane)`
   color: #fff;
@@ -22,14 +29,84 @@ const MainContainer = styled(Pane)`
 const BodyContainer = styled(Pane)`
   display: flex;
   flex-flow: column wrap;
+  padding: 2rem;
+`;
+
+const TitleMovie = styled(StyledHeading)`
+  display: inline-block;
+`;
+
+const ScoreContainer = styled(Pane)`
+  margin-left: 0.5rem;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  bottom: 10px;
+`;
+
+const CategoryContainer = styled.span`
+  background-color: rgba(255, 255, 255, 0.28);
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.2rem;
+`;
+
+const WraperSynopsisContainer = styled(Pane)`
+  display: flex;
+  flex-flow: row wrap;
 `;
 
 function Details() {
+  const [detailsMovie, setDetailsMovie] = useState({
+    id: 1,
+    title: "Wonder Woman",
+    genres: ["action", "adventure", "fantasy"],
+    duration: "2h 21min",
+    imagePath: "",
+    year: 2017,
+    score: 8.2,
+    category: "PG-13",
+  });
+
   return (
     <MainContainer>
       <Navbar />
       <BodyContainer>
-        <Synopsis />
+        <Pane>
+          <TitleMovie
+            headingtype="title"
+            fontSize="3rem"
+            fontWeight="bold"
+            lineHeight="5rem"
+          >
+            {detailsMovie.title}
+          </TitleMovie>
+          <ScoreContainer>
+            <img src={imageStar} alt="Star icon" width="15px" />{" "}
+            <span>{detailsMovie.score}</span>
+          </ScoreContainer>
+          <StyledHeading
+            headingtype="info"
+            fontSize="0.8rem"
+            wordSpacing="0.3125rem"
+          >
+            {detailsMovie.genres.join(", ")} • {detailsMovie.duration} •{" "}
+            {detailsMovie.year} •{" "}
+            <CategoryContainer>{detailsMovie.category}</CategoryContainer>
+          </StyledHeading>
+          <StyledButton btntype="primary" appearance="primary">
+            Watch now
+          </StyledButton>
+          <StyledButton btntype="secondary" appearance="primary">
+            More info
+          </StyledButton>
+        </Pane>
+        <WraperSynopsisContainer>
+          <Synopsis />
+          <Pane>
+            <Directed />
+            <Recommended />
+          </Pane>
+        </WraperSynopsisContainer>
         <Starring />
         <RelatedMovies />
       </BodyContainer>

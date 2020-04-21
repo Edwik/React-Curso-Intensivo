@@ -9,6 +9,9 @@ const MovieCategory = styled(Link)`
   position: relative;
   width: 100%;
   margin: 1rem 3rem;
+  &:hover {
+    transform: scale(1.05);
+  }
   @media (min-width: 576px) {
     width: 15.625rem;
     margin: 0.5rem 0.65rem;

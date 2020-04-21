@@ -4,11 +4,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { TrendingAction } from "./../../redux/actions/movies.actions";
-import Navbar from "./../../components/Navbar";
-import MovieCategories from "./../../components/MovieCategories";
-import StyledHeading from "./../../components/StyledHeading";
 import background from "./../../assets/images/wonder-woman-portrait.jpg";
-import StyledButton from "./../../components/Button";
+import {
+  Navbar,
+  MovieCategories,
+  StyledButton,
+  StyledHeading,
+} from "./../../components";
 
 const MainContainer = styled(Pane)`
   width: 100%;
@@ -61,11 +63,20 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
           <StyledHeading headingtype="subtitle" fontSize="1rem">
             Trending
           </StyledHeading>
-          <StyledHeading headingtype="title" fontSize="3rem">
+          <StyledHeading
+            headingtype="title"
+            fontSize="3rem"
+            fontWeight="bold"
+            lineHeight="5rem"
+          >
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.title}
           </StyledHeading>
-          <StyledHeading headingtype="info" fontSize="0.8rem">
-            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} *{" "}
+          <StyledHeading
+            headingtype="info"
+            fontSize="0.8rem"
+            wordSpacing="0.3125rem"
+          >
+            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} •{" "}
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.duration}
           </StyledHeading>
           <StyledButton

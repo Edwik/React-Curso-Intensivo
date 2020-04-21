@@ -1,0 +1,9 @@
+export { default as StyledButton } from "./Button";
+export { default as Directed } from "./Directed";
+export { default as MovieCategories } from "./MovieCategories";
+export { default as Navbar } from "./Navbar";
+export { default as Recommended } from "./Recommended";
+export { default as RelatedMovies } from "./RelatedMovies";
+export { default as Starring } from "./Starring";
+export { default as StyledHeading } from "./StyledHeading";
+export { default as Synopsis } from "./Synopsis";
