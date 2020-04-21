@@ -1,4 +1,4 @@
-const loginResponse = {
+const trendingResponse = {
   status: 200,
   data: {
     id: 1,
@@ -10,4 +10,4 @@ const loginResponse = {
   msg: "Trending movie sent successfully!",
 };
 
-export default loginResponse;
+export default trendingResponse;

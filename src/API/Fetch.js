@@ -32,6 +32,8 @@ export const Fetch = async (method, URL, data, extraHeaders) => {
       return responses.loginResponse;
     case Routes.trendingMovie:
       return responses.trendingResponse;
+    case Routes.categoriesMovie:
+      return responses.categoriesResponse;
     default:
       return {
         status: 404,
