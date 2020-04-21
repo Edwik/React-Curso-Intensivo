@@ -25,5 +25,5 @@ function* login(action) {
 }
 
 export function* loginSaga() {
-  yield takeEvery(Constans.loginAction, login);
+  yield takeEvery(Constans.LoginAction, login);
 }

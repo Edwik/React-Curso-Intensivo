@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import Constans from "./../../utils/Constans";
-import MovieService from "./../../API/services/MovieService";
+import MoviesService from "./../../API/services/MoviesService";
 
 function* movie(action) {
   try {
-    const data = yield call(MovieService.trending, action.payload);
+    const data = yield call(MoviesService.trending, action.payload);
 
     if (data.status !== 200) {
       return yield put({
@@ -25,5 +25,5 @@ function* movie(action) {
 }
 
 export function* moviesSaga() {
-  yield takeEvery(Constans.trendingAction, movie);
+  yield takeEvery(Constans.TrendingAction, movie);
 }
