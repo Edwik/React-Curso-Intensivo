@@ -30,11 +30,7 @@ function Starring() {
 
   return (
     <>
-      <StyledHeading
-        fontSize="1.2rem"
-        paddingvalue="3rem 0 1rem 0"
-        fontWeight="bold"
-      >
+      <StyledHeading fontSize="1.1rem" paddingvalue="3rem 0 1rem 0">
         Starring
       </StyledHeading>
       <StarringMovieList>

@@ -51,7 +51,7 @@ function Home() {
     id: 1,
     title: "Wonder Woman",
     genres: ["action", "adventure", "fantasy"],
-    duration: "2h 45min",
+    duration: "2h 21min",
     imagePath: "",
   });
 
@@ -67,12 +67,16 @@ function Home() {
             headingtype="title"
             fontSize="3rem"
             fontWeight="bold"
-            lineHeight="3rem"
+            lineHeight="5rem"
           >
             {trendingMovie.title}
           </StyledHeading>
-          <StyledHeading headingtype="info" fontSize="0.8rem">
-            {trendingMovie.genres.join(", ")} * {trendingMovie.duration}
+          <StyledHeading
+            headingtype="info"
+            fontSize="0.8rem"
+            wordSpacing="0.3125rem"
+          >
+            {trendingMovie.genres.join(", ")} • {trendingMovie.duration}
           </StyledHeading>
           <StyledButton
             btntype="primary"

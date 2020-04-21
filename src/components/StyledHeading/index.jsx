@@ -10,6 +10,8 @@ const StyledHeading = styled(Heading)`
   line-height: ${(props) => (props.lineHeight ? props.lineHeight : "normal")};
   ${(props) => (props.headingtype === "info" ? "margin-bottom: 2rem" : "")};
   padding: ${(props) => (props.paddingvalue ? props.paddingvalue : "")};
+  word-spacing: ${(props) =>
+    props.wordSpacing ? props.wordSpacing : "normal"};
 `;
 
 export default StyledHeading;
