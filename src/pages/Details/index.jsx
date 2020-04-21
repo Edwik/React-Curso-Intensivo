@@ -8,6 +8,9 @@ import Navbar from "./../../components/Navbar";
 import background from "./../../assets/images/wonder-woman-landscape.jpg";
 import StyledHeading from "./../../components/StyledHeading";
 import StyledButton from "./../../components/Button";
+import Directed from "./../../components/Directed";
+import Recommended from "./../../components/Recommended";
+import star from "./../../assets/svg/star-solid.svg";
 
 const MainContainer = styled(Pane)`
   color: #fff;
@@ -27,14 +30,35 @@ const BodyContainer = styled(Pane)`
   padding: 2rem;
 `;
 
-const DetailsMovie = styled(Pane)``;
+const TitleMovie = styled(StyledHeading)`
+  display: inline-block;
+`;
+
+const ScoreContainer = styled(Pane)`
+  margin-left: 0.5rem;
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  bottom: 10px;
+`;
+
+const CategoryContainer = styled.span`
+  background-color: rgba(255, 255, 255, 0.28);
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.2rem;
+`;
+
+const WraperSynopsisContainer = styled(Pane)`
+  display: flex;
+  flex-flow: row wrap;
+`;
 
 function Details() {
   const [detailsMovie, setDetailsMovie] = useState({
     id: 1,
     title: "Wonder Woman",
     genres: ["action", "adventure", "fantasy"],
-    duration: "2h 45min",
+    duration: "2h 21min",
     imagePath: "",
     year: 2017,
     score: 8.2,
@@ -45,17 +69,27 @@ function Details() {
     <MainContainer>
       <Navbar />
       <BodyContainer>
-        <DetailsMovie>
-          <StyledHeading
+        <Pane>
+          <TitleMovie
             headingtype="title"
             fontSize="3rem"
             fontWeight="bold"
-            lineHeight="3rem"
+            lineHeight="5rem"
           >
             {detailsMovie.title}
-          </StyledHeading>
-          <StyledHeading headingtype="info" fontSize="0.8rem">
-            {detailsMovie.genres.join(", ")} * {detailsMovie.duration}
+          </TitleMovie>
+          <ScoreContainer>
+            <img src={star} alt="Star icon" width="15px" />{" "}
+            <span>{detailsMovie.score}</span>
+          </ScoreContainer>
+          <StyledHeading
+            headingtype="info"
+            fontSize="0.8rem"
+            wordSpacing="0.3125rem"
+          >
+            {detailsMovie.genres.join(", ")} • {detailsMovie.duration} •{" "}
+            {detailsMovie.year} •{" "}
+            <CategoryContainer>{detailsMovie.category}</CategoryContainer>
           </StyledHeading>
           <StyledButton btntype="primary" appearance="primary">
             Watch now
@@ -63,8 +97,14 @@ function Details() {
           <StyledButton btntype="secondary" appearance="primary">
             More info
           </StyledButton>
-        </DetailsMovie>
-        <Synopsis />
+        </Pane>
+        <WraperSynopsisContainer>
+          <Synopsis />
+          <Pane>
+            <Directed />
+            <Recommended />
+          </Pane>
+        </WraperSynopsisContainer>
         <Starring />
         <RelatedMovies />
       </BodyContainer>
