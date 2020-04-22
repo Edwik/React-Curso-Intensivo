@@ -1,9 +1,11 @@
 .collapsed {
+  display: none !important;
   height: 0px;
   transition-property: height;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
   @media (min-width: 768px) {
+    display: flex !important;
     height: auto;
   }
 }
