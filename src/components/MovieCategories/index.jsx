@@ -4,7 +4,6 @@ import { Heading } from "evergreen-ui";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { CategoriesAction } from "./../../redux/actions/movies.actions";
-import background from "./../../assets/images/category-image.jpg";
 
 const MovieCategory = styled(Link)`
   text-decoration: none;
@@ -27,6 +26,7 @@ const CategoryName = styled(Heading)`
   text-transform: uppercase;
   font-weight: bold;
   color: #fff;
+  text-shadow: rgb(0, 0, 0) 0px 0px 10px;
   position: absolute;
   bottom: 0.5rem;
   left: 0.5rem;
@@ -47,7 +47,7 @@ function MovieCategories({ CATEGORIES_RESPONSE, CategoriesAction }) {
       {CATEGORIES_RESPONSE.res &&
         CATEGORIES_RESPONSE.res.map((category) => (
           <MovieCategory key={category.id} to="/details">
-            <ImageResponsive src={background} alt="Category Movie" />
+            <ImageResponsive src={category.src} alt="Category Movie" />
             <CategoryName>{category.title}</CategoryName>
           </MovieCategory>
         ))}
