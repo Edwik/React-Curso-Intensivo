@@ -16,6 +16,9 @@ const MovieCategory = styled(Link)`
     width: 15.625rem;
     margin: 0.5rem 0.65rem;
   }
+  @media (min-width: 992px) {
+    width: 30%;
+  }
 `;
 
 const CategoryName = styled(Heading)`
