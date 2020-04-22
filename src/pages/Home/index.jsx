@@ -67,7 +67,8 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
             headingtype="title"
             fontSize="3rem"
             fontWeight="bold"
-            lineHeight="5rem"
+            lineHeight="3rem"
+            paddingvalue="0.6rem 0"
           >
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.title}
           </StyledHeading>
@@ -75,6 +76,7 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
             headingtype="info"
             fontSize="0.8rem"
             wordSpacing="0.3125rem"
+            lineHeight="1.5rem"
           >
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} •{" "}
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.duration}
