@@ -9,11 +9,12 @@ const StyledNavbar = styled(Pane)`
   flex-direction: column;
 `;
 
-const ToggleButton = styled.span`
+const ToggleButton = styled.a`
   color: #fff;
   padding: 0.5rem;
   border-radius: 50%;
   width: 0.9375rem;
+  text-decoration: none;
   &:active {
     background-color: rgba(255, 255, 255, 0.2);
   }
@@ -49,7 +50,9 @@ function Navbar() {
   const classContainer = isOpen ? "expanded" : "collapsed";
   return (
     <StyledNavbar>
-      <ToggleButton onClick={() => setIsOpen(!isOpen)}>☰</ToggleButton>
+      <ToggleButton href="#" onClick={() => setIsOpen(!isOpen)}>
+        ☰
+      </ToggleButton>
       <LinksContainer className={classContainer}>
         <StyledLink to="/home">Movies</StyledLink>
         <StyledLink to="/details">TV series</StyledLink>

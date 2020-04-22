@@ -23,7 +23,7 @@ const MainContainer = styled(Pane)`
       rgba(0, 0, 0, 1)
     ),
     url(${background});
-  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const BodyContainer = styled(Pane)`
@@ -42,6 +42,7 @@ const ScoreContainer = styled(Pane)`
   display: inline-block;
   position: relative;
   bottom: 10px;
+  line-height: 3rem;
 `;
 
 const CategoryContainer = styled.span`
@@ -76,7 +77,8 @@ function Details() {
             headingtype="title"
             fontSize="3rem"
             fontWeight="bold"
-            lineHeight="5rem"
+            lineHeight="3rem"
+            paddingvalue="0.6rem 0"
           >
             {detailsMovie.title}
           </TitleMovie>
@@ -88,6 +90,7 @@ function Details() {
             headingtype="info"
             fontSize="0.8rem"
             wordSpacing="0.3125rem"
+            lineHeight="1.5rem"
           >
             {detailsMovie.genres.join(", ")} • {detailsMovie.duration} •{" "}
             {detailsMovie.year} •{" "}
