@@ -60,7 +60,11 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
       <Navbar />
       <BodyContainer>
         <TrendingMovie>
-          <StyledHeading headingtype="subtitle" fontSize="1rem">
+          <StyledHeading
+            headingtype="subtitle"
+            fontSize="1rem"
+            letterSpacing="0.125rem"
+          >
             Trending
           </StyledHeading>
           <StyledHeading
@@ -69,6 +73,7 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
             fontWeight="bold"
             lineHeight="3rem"
             paddingvalue="0.6rem 0"
+            textShadow="rgb(0,0,0) 0px 0px 40px"
           >
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.title}
           </StyledHeading>

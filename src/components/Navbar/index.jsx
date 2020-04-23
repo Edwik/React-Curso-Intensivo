@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Pane } from "evergreen-ui";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import "./styles.scss";
 
 const StyledNavbar = styled(Pane)`
+  margin-left: 1rem;
   display: flex;
   flex-direction: column;
 `;
@@ -33,15 +34,19 @@ const LinksContainer = styled(Pane)`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledNavLink = styled(NavLink)`
   color: #fff;
   text-transform: uppercase;
-  font-weight: bold;
-  padding: 1rem;
+  padding: 0.5rem;
   text-decoration: none;
   &:active,
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
+  }
+  @media (min-width: 768px) {
+    padding: 1rem;
+    letter-spacing: 0.1875rem;
+    font-size: 1.25rem;
   }
 `;
 
@@ -54,10 +59,10 @@ function Navbar() {
         ☰
       </ToggleButton>
       <LinksContainer className={classContainer}>
-        <StyledLink to="/home">Movies</StyledLink>
-        <StyledLink to="#">TV series</StyledLink>
-        <StyledLink to="#">Channel</StyledLink>
-        <StyledLink to="#">Settings</StyledLink>
+        <StyledNavLink to="/home">Movies</StyledNavLink>
+        <StyledNavLink to="#">TV series</StyledNavLink>
+        <StyledNavLink to="#">Channel</StyledNavLink>
+        <StyledNavLink to="#">Settings</StyledNavLink>
       </LinksContainer>
     </StyledNavbar>
   );

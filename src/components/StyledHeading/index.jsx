@@ -12,6 +12,9 @@ const StyledHeading = styled(Heading)`
   padding: ${(props) => (props.paddingvalue ? props.paddingvalue : "")};
   word-spacing: ${(props) =>
     props.wordSpacing ? props.wordSpacing : "normal"};
+  letter-spacing: ${(props) =>
+    props.letterSpacing ? props.letterSpacing : "normal"};
+  text-shadow: ${(props) => (props.textShadow ? props.textShadow : "none")};
 `;
 
 export default StyledHeading;
