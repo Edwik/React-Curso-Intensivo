@@ -81,12 +81,7 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} •{" "}
             {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.duration}
           </StyledHeading>
-          <StyledButton
-            btntype="primary"
-            appearance="primary"
-            is={Link}
-            to="/details"
-          >
+          <StyledButton btntype="primary" appearance="primary" is={Link} to="#">
             Watch now
           </StyledButton>
           <StyledButton

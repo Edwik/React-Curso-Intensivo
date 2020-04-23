@@ -55,9 +55,9 @@ function Navbar() {
       </ToggleButton>
       <LinksContainer className={classContainer}>
         <StyledLink to="/home">Movies</StyledLink>
-        <StyledLink to="/details">TV series</StyledLink>
-        <StyledLink to="/details">Channel</StyledLink>
-        <StyledLink to="/details">Settings</StyledLink>
+        <StyledLink to="#">TV series</StyledLink>
+        <StyledLink to="#">Channel</StyledLink>
+        <StyledLink to="#">Settings</StyledLink>
       </LinksContainer>
     </StyledNavbar>
   );

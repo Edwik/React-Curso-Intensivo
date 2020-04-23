@@ -46,7 +46,7 @@ function MovieCategories({ CATEGORIES_RESPONSE, CategoriesAction }) {
     <>
       {CATEGORIES_RESPONSE.res &&
         CATEGORIES_RESPONSE.res.map((category) => (
-          <MovieCategory key={category.id} to="/details">
+          <MovieCategory key={category.id} to="#">
             <ImageResponsive src={category.src} alt="Category Movie" />
             <CategoryName>{category.title}</CategoryName>
           </MovieCategory>
