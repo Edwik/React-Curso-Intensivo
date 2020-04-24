@@ -1,7 +1,7 @@
 const trendingResponse = {
   status: 200,
   data: {
-    id: 1,
+    id: "wonder-woman",
     title: "Wonder Woman",
     genres: ["action", "adventure", "fantasy"],
     duration: "2h 45min",

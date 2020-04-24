@@ -26,7 +26,6 @@ export const Fetch = async (method, URL, data, extraHeaders) => {
   if (data) {
     requestInit.body = JSON.stringify(data);
   }
-
   switch (URL) {
     case Routes.login:
       return responses.loginResponse;
@@ -34,11 +33,30 @@ export const Fetch = async (method, URL, data, extraHeaders) => {
       return responses.trendingResponse;
     case Routes.categoriesMovie:
       return responses.categoriesResponse;
+    case Routes.detailsMovie:
+      return getMovieDetails(URL, data);
     default:
-      return {
-        status: 404,
-        msg: "Route not found",
-      };
+      return { status: 404, msg: "Route not found" };
+  }
+
+  function getMovieDetails(URL, data) {
+    let endpoint = `${URL}/${data}`;
+    switch (endpoint) {
+      case Routes.movieAntMan:
+        return responses.movieAntManResponse;
+      case Routes.movieAvengers:
+        return responses.movieAvengersResponse;
+      case Routes.movieDeadpool:
+        return responses.movieDeadpoolResponse;
+      case Routes.movieIronMan:
+        return responses.movieIronManResponse;
+      case Routes.movieThor:
+        return responses.movieThorResponse;
+      case Routes.movieWonderWoman:
+        return responses.movieWonderWomanResponse;
+      default:
+        return { status: 404, msg: `${data} route not found` };
+    }
   }
 
   // return await fetch(
