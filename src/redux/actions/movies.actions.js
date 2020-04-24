@@ -41,3 +41,24 @@ export const FailFetchCategories = (payload) => {
     payload,
   };
 };
+
+export const MovieDetailsAction = (payload) => {
+  return {
+    type: Constans.MovieDetailsAction,
+    payload,
+  };
+};
+
+export const SuccessFetchMovieDetails = (payload) => {
+  return {
+    type: Constans.SuccessFetchMovieDetails,
+    payload,
+  };
+};
+
+export const FailFetchMovieDetails = (payload) => {
+  return {
+    type: Constans.FailFetchMovieDetails,
+    payload,
+  };
+};
