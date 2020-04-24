@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Pane } from "evergreen-ui";
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import { MovieDetailsAction } from "./../../redux/actions/movies.actions";
 import background from "./../../assets/images/wonder-woman-landscape.jpg";
 import imageStar from "./../../assets/svg/star-solid.svg";
 import {
@@ -17,12 +20,20 @@ import {
 const MainContainer = styled(Pane)`
   color: #fff;
   background-color: #000;
-  background-image: linear-gradient(
+  background-image: ${(props) =>
+    props.backgroundImage
+      ? `linear-gradient(
       to left,
       rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 1)
     ),
-    url(${background});
+    url(${props.backgroundImage})`
+      : `linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 1)
+    ),
+    url(${background})`};
   background-size: cover;
 `;
 
@@ -56,65 +67,77 @@ const WraperSynopsisContainer = styled(Pane)`
   flex-flow: row wrap;
 `;
 
-function Details() {
-  const [detailsMovie, setDetailsMovie] = useState({
-    id: 1,
-    title: "Wonder Woman",
-    genres: ["action", "adventure", "fantasy"],
-    duration: "2h 21min",
-    imagePath: "",
-    year: 2017,
-    score: 8.2,
-    category: "PG-13",
-  });
+function Details({ MOVIE_DETAILS_RESPONSE, MovieDetailsAction }) {
+  let { id } = useParams();
+
+  useEffect(() => {
+    MovieDetailsAction(id);
+  }, [MovieDetailsAction, id]);
 
   return (
-    <MainContainer>
-      <Navbar />
-      <BodyContainer>
-        <Pane>
-          <TitleMovie
-            headingtype="title"
-            fontSize="3rem"
-            fontWeight="bold"
-            lineHeight="3rem"
-            paddingvalue="0.6rem 0"
-          >
-            {detailsMovie.title}
-          </TitleMovie>
-          <ScoreContainer>
-            <img src={imageStar} alt="Star icon" width="15px" />{" "}
-            <span>{detailsMovie.score}</span>
-          </ScoreContainer>
-          <StyledHeading
-            headingtype="info"
-            fontSize="0.8rem"
-            wordSpacing="0.3125rem"
-            lineHeight="1.5rem"
-          >
-            {detailsMovie.genres.join(", ")} • {detailsMovie.duration} •{" "}
-            {detailsMovie.year} •{" "}
-            <CategoryContainer>{detailsMovie.category}</CategoryContainer>
-          </StyledHeading>
-          <StyledButton btntype="primary" appearance="primary">
-            Watch now
-          </StyledButton>
-          <StyledButton btntype="secondary" appearance="primary">
-            More info
-          </StyledButton>
-        </Pane>
-        <WraperSynopsisContainer>
-          <Synopsis />
-          <Pane>
-            <Directed />
-            <Recommended />
-          </Pane>
-        </WraperSynopsisContainer>
-        <Starring />
-        <RelatedMovies />
-      </BodyContainer>
-    </MainContainer>
+    <>
+      {MOVIE_DETAILS_RESPONSE.res && (
+        <MainContainer
+          backgroundImage={MOVIE_DETAILS_RESPONSE.res.backgroundImage}
+        >
+          <Navbar />
+          <BodyContainer>
+            <Pane>
+              <TitleMovie
+                headingtype="title"
+                fontSize="3rem"
+                fontWeight="bold"
+                lineHeight="3rem"
+                paddingvalue="0.6rem 0"
+              >
+                {MOVIE_DETAILS_RESPONSE.res.title}
+              </TitleMovie>
+              <ScoreContainer>
+                <img src={imageStar} alt="Star icon" width="15px" />{" "}
+                <span>{MOVIE_DETAILS_RESPONSE.res.score}</span>
+              </ScoreContainer>
+              <StyledHeading
+                headingtype="info"
+                fontSize="0.8rem"
+                wordSpacing="0.3125rem"
+                lineHeight="1.5rem"
+              >
+                {MOVIE_DETAILS_RESPONSE.res.genres.join(", ")} •{" "}
+                {MOVIE_DETAILS_RESPONSE.res.duration} •{" "}
+                {MOVIE_DETAILS_RESPONSE.res.year} •{" "}
+                <CategoryContainer>
+                  {MOVIE_DETAILS_RESPONSE.res.category}
+                </CategoryContainer>
+              </StyledHeading>
+              <StyledButton btntype="primary" appearance="primary">
+                Watch now
+              </StyledButton>
+              <StyledButton btntype="secondary" appearance="primary">
+                More info
+              </StyledButton>
+            </Pane>
+            <WraperSynopsisContainer>
+              <Synopsis synopsis={MOVIE_DETAILS_RESPONSE.res.synopsis} />
+              <Pane>
+                <Directed directors={MOVIE_DETAILS_RESPONSE.res.directors} />
+                <Recommended
+                  recommended={MOVIE_DETAILS_RESPONSE.res.recommended}
+                />
+              </Pane>
+            </WraperSynopsisContainer>
+            <Starring starring={MOVIE_DETAILS_RESPONSE.res.starring} />
+            <RelatedMovies
+              relatedMovies={MOVIE_DETAILS_RESPONSE.res.relatedMovies}
+            />
+          </BodyContainer>
+        </MainContainer>
+      )}
+    </>
   );
 }
 
-export default Details;
+const mapStateToProps = (state, props) => ({
+  MOVIE_DETAILS_RESPONSE: state.movieDetailsReducers.MovieDetailsResponse,
+});
+
+export default connect(mapStateToProps, { MovieDetailsAction })(Details);

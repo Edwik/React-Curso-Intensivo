@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pane, Avatar } from "evergreen-ui";
 import styled from "styled-components";
 import StyledHeading from "./../StyledHeading";
-import imagePath from "./../../assets/images/gal-gadot.jpg";
 
 const StarringMovieList = styled(Pane)`
   display: flex;
@@ -15,31 +14,22 @@ const StarringMovie = styled(Pane)`
   text-align: center;
   &:hover {
     transform: scale(1.2);
-    filter: saturate(200%);
   }
 `;
 
-function Starring() {
-  const [starringMovie, setStarringMovie] = useState([
-    { id: 1, name: "Gal Gadot", photo: imagePath, quantityMovies: 21 },
-    { id: 2, name: "Chris Pine", photo: imagePath, quantityMovies: 53 },
-    { id: 3, name: "Connie Nielsen", photo: imagePath, quantityMovies: 43 },
-    { id: 4, name: "Danny Huston", photo: imagePath, quantityMovies: 39 },
-    { id: 5, name: "David Thewlis", photo: imagePath, quantityMovies: 23 },
-  ]);
-
+function Starring({ starring }) {
   return (
     <>
       <StyledHeading fontSize="1.1rem" paddingvalue="3rem 0 1rem 0">
         Starring
       </StyledHeading>
       <StarringMovieList>
-        {starringMovie.map((starring) => (
-          <StarringMovie key={starring.id}>
-            <Avatar src={starring.photo} name={starring.name} size={100} />
-            <StyledHeading fontSize="0.9rem">{starring.name}</StyledHeading>
+        {starring.map((star) => (
+          <StarringMovie key={star.id}>
+            <Avatar src={star.photo} name={star.name} size={100} />
+            <StyledHeading fontSize="0.9rem">{star.name}</StyledHeading>
             <StyledHeading fontSize="0.6rem">
-              {starring.quantityMovies} Movies
+              {star.movies} Movies
             </StyledHeading>
           </StarringMovie>
         ))}

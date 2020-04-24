@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pane } from "evergreen-ui";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { StyledHeading } from "./../../components";
-import imagePath from "./../../assets/images/movie-cover-02.jpg";
-import imagePath03 from "./../../assets/images/movie-cover-03.jpg";
 import star from "./../../assets/svg/star-solid.svg";
 
 const RelatedMoviesList = styled(Pane)`
@@ -11,7 +10,8 @@ const RelatedMoviesList = styled(Pane)`
   flex-flow: row wrap;
 `;
 
-const RelatedMovie = styled(Pane)`
+const RelatedMovie = styled(Link)`
+  color: #fff;
   margin: 0.3rem 0.9rem;
   width: 8rem;
   position: relative;
@@ -37,21 +37,7 @@ const ScoreContainer = styled(Pane)`
   align-content: center;
 `;
 
-function RelatedMovies() {
-  const [relatedMovies, setRelatedMovies] = useState([
-    {
-      id: 1,
-      name: "Avengers: Endgame",
-      image: imagePath,
-      imagePath,
-      score: 7.5,
-    },
-    { id: 2, name: "Captain Marvel", image: imagePath, score: 5 },
-    { id: 3, name: "Black Panther", image: imagePath, score: 3.5 },
-    { id: 4, name: "Avengers: Infinity War", image: imagePath03, score: 9 },
-    { id: 5, name: "Ant-Man and the Wasp", image: imagePath03, score: 6.9 },
-  ]);
-
+function RelatedMovies({ relatedMovies }) {
   return (
     <>
       <StyledHeading fontSize="1.1rem" paddingvalue="3rem 0 1rem 0">
@@ -59,7 +45,7 @@ function RelatedMovies() {
       </StyledHeading>
       <RelatedMoviesList>
         {relatedMovies.map((movie) => (
-          <RelatedMovie key={movie.id}>
+          <RelatedMovie key={movie.id} to={`/movie/${movie.id}`}>
             <ImgMovie src={movie.image} alt={movie.name} />
             <ScoreContainer>
               <img src={star} alt="Star icon" width="30%" />{" "}

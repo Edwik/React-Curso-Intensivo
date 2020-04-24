@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Avatar } from "evergreen-ui";
 import styled from "styled-components";
 import { StyledHeading } from "./../../components";
@@ -17,26 +17,11 @@ const PersonContainer = styled.span`
   bottom: 5px;
 `;
 
-function Recommended() {
-  const [recommended, setRecommended] = useState([
-    {
-      id: 1,
-      name: "Rio",
-      photo:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg",
-    },
-    {
-      id: 2,
-      name: "James",
-      photo:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg",
-    },
-  ]);
-
+function Recommended({ recommended }) {
   return (
     <>
       <StyledHeading fontSize="1.1rem" paddingvalue="3rem 0 1rem 0">
-        Recommended by {recommended.name}
+        Recommended by
       </StyledHeading>
       <StyledHeading fontSize="0.9rem">
         <AvatarContainer>
