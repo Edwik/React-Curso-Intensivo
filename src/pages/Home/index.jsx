@@ -56,53 +56,62 @@ function Home({ TRENDING_RESPONSE, TrendingAction }) {
   }, [TrendingAction]);
 
   return (
-    <MainContainer>
-      <Navbar />
-      <BodyContainer>
-        <TrendingMovie>
-          <StyledHeading
-            headingtype="subtitle"
-            fontSize="1rem"
-            letterSpacing="0.125rem"
-          >
-            Trending
-          </StyledHeading>
-          <StyledHeading
-            headingtype="title"
-            fontSize="3rem"
-            fontWeight="bold"
-            lineHeight="3rem"
-            paddingvalue="0.6rem 0"
-            textShadow="rgb(0,0,0) 0px 0px 40px"
-          >
-            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.title}
-          </StyledHeading>
-          <StyledHeading
-            headingtype="info"
-            fontSize="0.8rem"
-            wordSpacing="0.3125rem"
-            lineHeight="1.5rem"
-          >
-            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.genres.join(", ")} •{" "}
-            {TRENDING_RESPONSE.res && TRENDING_RESPONSE.res.duration}
-          </StyledHeading>
-          <StyledButton btntype="primary" appearance="primary" is={Link} to="#">
-            Watch now
-          </StyledButton>
-          <StyledButton
-            btntype="secondary"
-            appearance="primary"
-            is={Link}
-            to="/details"
-          >
-            More info
-          </StyledButton>
-        </TrendingMovie>
-        <CategoriesContainer>
-          <MovieCategories />
-        </CategoriesContainer>
-      </BodyContainer>
-    </MainContainer>
+    <>
+      {TRENDING_RESPONSE.res && (
+        <MainContainer>
+          <Navbar />
+          <BodyContainer>
+            <TrendingMovie>
+              <StyledHeading
+                headingtype="subtitle"
+                fontSize="1rem"
+                letterSpacing="0.125rem"
+              >
+                Trending
+              </StyledHeading>
+              <StyledHeading
+                headingtype="title"
+                fontSize="3rem"
+                fontWeight="bold"
+                lineHeight="3rem"
+                paddingvalue="0.6rem 0"
+                textShadow="rgb(0,0,0) 0px 0px 40px"
+              >
+                {TRENDING_RESPONSE.res.title}
+              </StyledHeading>
+              <StyledHeading
+                headingtype="info"
+                fontSize="0.8rem"
+                wordSpacing="0.3125rem"
+                lineHeight="1.5rem"
+              >
+                {TRENDING_RESPONSE.res.genres.join(", ")} •{" "}
+                {TRENDING_RESPONSE.res.duration}
+              </StyledHeading>
+              <StyledButton
+                btntype="primary"
+                appearance="primary"
+                is={Link}
+                to="#"
+              >
+                Watch now
+              </StyledButton>
+              <StyledButton
+                btntype="secondary"
+                appearance="primary"
+                is={Link}
+                to={`/movie/${TRENDING_RESPONSE.res.id}`}
+              >
+                More info
+              </StyledButton>
+            </TrendingMovie>
+            <CategoriesContainer>
+              <MovieCategories />
+            </CategoriesContainer>
+          </BodyContainer>
+        </MainContainer>
+      )}
+    </>
   );
 }
 

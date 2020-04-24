@@ -11,7 +11,7 @@ function Navigator() {
       <Switch>
         <Route exact path={`/`} component={Login} />
         <Route exact path={`/home`} component={Home} />
-        <Route exact path={`/details`} component={Details} />
+        <Route exact path={`/movie/:id`} component={Details} />
         <Route component={NotFoundComponent} />
       </Switch>
     </Router>
