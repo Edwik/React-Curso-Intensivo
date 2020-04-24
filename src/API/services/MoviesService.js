@@ -24,6 +24,17 @@ class MoviesService {
         return jsonResponse(500, err);
       });
   }
+
+  async movieDetails(payload) {
+    return Fetch("get", Routes.detailsMovie, payload)
+      .then((res) => {
+        console.log(res);
+        return jsonResponse(res.status, res.data);
+      })
+      .catch((err) => {
+        return jsonResponse(500, err);
+      });
+  }
 }
 
 export default new MoviesService();
