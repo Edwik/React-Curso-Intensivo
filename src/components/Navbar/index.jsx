@@ -60,9 +60,9 @@ function Navbar() {
       </ToggleButton>
       <LinksContainer className={classContainer}>
         <StyledNavLink to="/home">Movies</StyledNavLink>
-        <StyledNavLink to="#">TV series</StyledNavLink>
-        <StyledNavLink to="#">Channel</StyledNavLink>
-        <StyledNavLink to="#">Settings</StyledNavLink>
+        <StyledNavLink to="/tv-series">TV series</StyledNavLink>
+        <StyledNavLink to="/channel">Channel</StyledNavLink>
+        <StyledNavLink to="/settings">Settings</StyledNavLink>
       </LinksContainer>
     </StyledNavbar>
   );
