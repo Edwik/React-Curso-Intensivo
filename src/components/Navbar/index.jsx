@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Pane } from "evergreen-ui";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import SearchButton from "./../SearchButton";
 import "./styles.scss";
 
 const StyledNavbar = styled(Pane)`
@@ -63,6 +64,7 @@ function Navbar() {
         <StyledNavLink to="/tv-series">TV series</StyledNavLink>
         <StyledNavLink to="/channel">Channel</StyledNavLink>
         <StyledNavLink to="/settings">Settings</StyledNavLink>
+        <SearchButton />
       </LinksContainer>
     </StyledNavbar>
   );
