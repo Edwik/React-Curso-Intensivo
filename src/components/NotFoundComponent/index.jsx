@@ -1,10 +1,8 @@
-import React from 'react'
+import React from "react";
+import { StyledHeading } from "./../../components";
 
-function NotFoundComponent(){
-
-	return(
-		<div>NotFoundComponent</div>
-	)
+function NotFoundComponent() {
+  return <StyledHeading>Page not found</StyledHeading>;
 }
 
-export {NotFoundComponent}
+export { NotFoundComponent };
