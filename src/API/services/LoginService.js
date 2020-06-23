@@ -14,6 +14,17 @@ class LoginService {
         })
     }
 
+    async create(payload) {
+        return Fetch('post', 'create/user', payload)
+        .then( res => {
+            console.log(res)
+            return jsonResponse(res.status, res.data)
+        })
+        .catch( err => {
+            return jsonResponse(500, err)
+        })
+    }
+
 }
 
 export default new LoginService()

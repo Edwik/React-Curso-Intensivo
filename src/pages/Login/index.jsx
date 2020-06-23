@@ -1,10 +1,12 @@
 import React,{useState, useEffect} from 'react'
+
 import styled from 'styled-components'
 import { Pane, TextInput, Button, Heading } from 'evergreen-ui'
 import background from './../../assets/images/background.jpg'
 import {connect} from 'react-redux'
-import {LoginAction} from './../../redux/actions/login.actions'
+import {LoginAction} from '../../redux/actions/login.actions'
 
+/*Styles*/
 const Wrapper = styled.div`
 	display: flex;
 	width: 100%;
@@ -38,6 +40,7 @@ const Btn = styled(Button)`
 	justify-content: center;
 `
 
+/*Component o Page*/
 function Login ({LOGIN_RESPONSE, LoginAction}){
 
 	const [email, setEmail] = useState('');
@@ -77,17 +80,24 @@ function Login ({LOGIN_RESPONSE, LoginAction}){
 		</FormContainer>
 	)
 
+	const FooterElement = (
+		<div style={{backgroundColor: 'yellow'}}>este es mi footer</div>
+	)
+
 	return(
 		<Wrapper>
 			{FormElement}
+			{FooterElement}
 		</Wrapper>
 	)
 }
 
+/*Methodo*/
 const mapStateToProps = (state, props) => {
 	return {
 		LOGIN_RESPONSE: state.loginRededucers.LoginResponse
 	}
 }
 
+/*Export*/
 export default connect( mapStateToProps, {LoginAction} )(Login)
